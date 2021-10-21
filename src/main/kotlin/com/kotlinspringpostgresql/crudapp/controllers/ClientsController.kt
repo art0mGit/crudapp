@@ -1,12 +1,14 @@
-package com.kotlinspringpostgresql.crudapp
+package com.kotlinspringpostgresql.crudapp.controllers
 
+import com.kotlinspringpostgresql.crudapp.models.Clients
+import com.kotlinspringpostgresql.crudapp.service.*
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
 
 @RestController
 @RequestMapping("/clients", produces = [MediaType.APPLICATION_JSON_VALUE])
-class ClientController(private val clientService: ClientService) {
+class ClientController(private val clientService: ClientServiceImpl) {
 
     @GetMapping
     fun findAll() = clientService.findAll()
@@ -17,7 +19,7 @@ class ClientController(private val clientService: ClientService) {
     }
 
     @PostMapping
-    fun create(@Valid @RequestBody request: SaveClientRequest):Clients {
+    fun create(@Valid @RequestBody request: SaveClientRequest): Clients {
         return clientService.create(request)
     }
 

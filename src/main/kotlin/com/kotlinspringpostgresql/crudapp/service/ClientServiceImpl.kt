@@ -1,12 +1,22 @@
-package com.kotlinspringpostgresql.crudapp
+package com.kotlinspringpostgresql.crudapp.service
 
 
+import com.kotlinspringpostgresql.crudapp.controllers.ClientNotFoundException
+import com.kotlinspringpostgresql.crudapp.dao.ClientDao
+import com.kotlinspringpostgresql.crudapp.dao.ClientPrimarySource
+import com.kotlinspringpostgresql.crudapp.dao.ClientSecondarySource
+import com.kotlinspringpostgresql.crudapp.models.Clients
 import org.slf4j.LoggerFactory
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 
 @Service
-class ClientServiceImpl(private val clientDao: ClientDao) : ClientService {
+class ClientServiceImpl(
+    private val clientDao: ClientPrimarySource,
+//    private val secondarySource: ClientSecondarySource
+//private val clientDao: ClientDao
+) : ClientService {
+
 
     override fun findAll(): List<Clients> {
         log.info("Find all clients")
@@ -16,9 +26,10 @@ class ClientServiceImpl(private val clientDao: ClientDao) : ClientService {
     override fun findById(id: Int): Clients {
         log.info("Find client with id=$id")
         return clientDao.findByIdOrNull(id) ?: throw ClientNotFoundException(id)
+
     }
 
-    override fun create(request: SaveClientRequest) : Clients {
+    override fun create(request: SaveClientRequest): Clients {
         log.info("Create new client with name=${request.name}")
         return clientDao.save(
             Clients(
@@ -30,7 +41,7 @@ class ClientServiceImpl(private val clientDao: ClientDao) : ClientService {
         )
     }
 
-    override fun update(id: Int, request: SaveClientRequest) : Clients {
+    override fun update(id: Int, request: SaveClientRequest): Clients {
         log.info("Update client with id=$id")
         val client = clientDao.findByIdOrNull(id) ?: throw ClientNotFoundException(id)
         return clientDao.save(
@@ -41,7 +52,7 @@ class ClientServiceImpl(private val clientDao: ClientDao) : ClientService {
         )
     }
 
-    override fun delete(id: Int) : Clients {
+    override fun delete(id: Int): Clients {
         log.info("Delete client with id=$id")
         val client = clientDao.findByIdOrNull(id) ?: throw ClientNotFoundException(id)
         clientDao.delete(client)

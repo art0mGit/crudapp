@@ -1,4 +1,4 @@
-package com.kotlinspringpostgresql.crudapp
+package com.kotlinspringpostgresql.crudapp.service
 
 import java.time.LocalDate
 import java.time.LocalDateTime

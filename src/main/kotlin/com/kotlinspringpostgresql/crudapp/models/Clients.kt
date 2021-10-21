@@ -1,4 +1,4 @@
-package com.kotlinspringpostgresql.crudapp
+package com.kotlinspringpostgresql.crudapp.models
 
 import com.fasterxml.jackson.annotation.JsonFormat
 import java.time.LocalDate

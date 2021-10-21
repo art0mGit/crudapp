@@ -1,4 +1,6 @@
-package com.kotlinspringpostgresql.crudapp
+package com.kotlinspringpostgresql.crudapp.service
+
+import com.kotlinspringpostgresql.crudapp.models.Clients
 
 interface ClientService {
 
