@@ -1,6 +1,6 @@
 package com.kotlinspringpostgresql.crudapp.configuration
 
-import com.kotlinspringpostgresql.crudapp.dao.ClientPrimarySource
+import com.kotlinspringpostgresql.crudapp.dao.primary.ClientPrimarySource
 import com.kotlinspringpostgresql.crudapp.models.Clients
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource

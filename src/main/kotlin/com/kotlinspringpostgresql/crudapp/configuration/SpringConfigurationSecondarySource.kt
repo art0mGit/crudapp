@@ -1,6 +1,6 @@
 package com.kotlinspringpostgresql.crudapp.configuration
 
-import com.kotlinspringpostgresql.crudapp.dao.ClientSecondarySource
+import com.kotlinspringpostgresql.crudapp.dao.secondary.ClientSecondarySource
 import com.kotlinspringpostgresql.crudapp.models.Clients
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.context.annotation.Primary
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 import org.springframework.orm.jpa.JpaTransactionManager
 import org.springframework.orm.jpa.JpaVendorAdapter
@@ -27,7 +26,7 @@ import javax.sql.DataSource
 class SpringConfigurationSecondarySource {
 
     @Configuration
-    @ConfigurationProperties(prefix = "spring.secondDatasource")
+    @ConfigurationProperties(prefix = "spring.second-datasource")
     class JdbcSecondaryProperties : HikariConfig()
 
     @Bean

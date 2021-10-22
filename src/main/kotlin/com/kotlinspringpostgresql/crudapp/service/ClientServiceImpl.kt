@@ -2,9 +2,7 @@ package com.kotlinspringpostgresql.crudapp.service
 
 
 import com.kotlinspringpostgresql.crudapp.controllers.ClientNotFoundException
-import com.kotlinspringpostgresql.crudapp.dao.ClientDao
-import com.kotlinspringpostgresql.crudapp.dao.ClientPrimarySource
-import com.kotlinspringpostgresql.crudapp.dao.ClientSecondarySource
+import com.kotlinspringpostgresql.crudapp.dao.primary.ClientPrimarySource
 import com.kotlinspringpostgresql.crudapp.models.Clients
 import org.slf4j.LoggerFactory
 import org.springframework.data.repository.findByIdOrNull
